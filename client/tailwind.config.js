@@ -10,7 +10,10 @@ module.exports = {
       colors: {
          primary: '#2952e3',
          secondary: '#2546bd',
-         white: '#FFF'
+         white: '#FFF',
+         bcg: 'rgb(39, 51, 89, 0.4)',
+         send: '#3d4f7c',
+         red: '#800000'
       },
       extend: {
          screens: {

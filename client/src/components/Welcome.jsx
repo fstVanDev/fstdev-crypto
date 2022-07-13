@@ -1,8 +1,9 @@
 import { AiFillPlayCircle } from "react-icons/ai"
 import { SiEthereum } from 'react-icons/si'
 import { BsInfoCircle } from 'react-icons/bs'
-
+import { TranscactionContext } from "../context/TransactionContext"
 import { Loader } from './'
+import React, {useContext } from 'react'
 
 const commonStyles = 'min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border border-1 border-white text-sm font-light text-white'
 
@@ -13,24 +14,31 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
       step="0.0001"
       value={value}
       onChange={(e) => handleChange(e, name)}
-      className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+      className="my-2 w-full rounded-md p-2 text-white outline-none bg-bcg text-sm white-glassmorphism focus:border-none"
    />
 );
 
 const Welcome = () => {
 
+   const { value } = useContext(TranscactionContext)
+   console.log(value)
+
    const connectWallet = () => {
+
+   }
+
+   const handleSubmit = () => {
 
    }
 
    return (
       <div className="flex w-full justify-center items-center">
-         <div className="flex md:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
-            <div className="flex flex-1 justify-start flex-col md:mr-10">
+         <div className="flex mf:flex-row flex-col items-start justify-between mf:p-20 py-12 px-4">
+            <div className="flex flex-1 justify-start flex-col mf:mr-10">
                <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1">
                   Send Crypto <br /> across the world
                </h1>
-               <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
+               <p className="text-left mt-5 text-white font-light mf:w-9/12 w-11/12 text-base">
                   Explore the crypto world. Buy and sell cryptocurrencies easily on Krypto
                </p>
                <button
@@ -47,7 +55,7 @@ const Welcome = () => {
                   <div className={`rounded-tl-2xl ${commonStyles}`}>
                      Reliability
                   </div>
-                  <div className={commonStyles}>
+                  <div className={`${commonStyles}`}>
                      Security
                   </div>
                   <div className={`rounded-tr-2xl ${commonStyles}`}>
@@ -65,7 +73,7 @@ const Welcome = () => {
                </div>
             </div>
 
-            <div className="flex flex-col flex-1 items-center justify-start w-full md:mt-0 mt-10">
+            <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
                <div className="p-3 justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorpism">
                   <div className="flex justify-between flex-col w-full h-full">
                      <div className="flex justify-between items-start">
@@ -90,6 +98,21 @@ const Welcome = () => {
                   <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={() => { }} />
                   <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={() => { }} />
                   <Input placeholder="Enter Message" name="message" type="text" handleChange={() => { }} />
+
+                  <div className="h-[1px] w-full bg-white my-2" />
+
+                  {false ? (
+                     <Loader />
+                  ) : (
+                     <button
+                        type="button"
+                           onClick={handleSubmit}
+                           className='text-white w-full mt-2 border-[1px] p-2 border-send rounded-full cursor-pointer'
+                     >
+                        Send Now
+                     </button>
+                  )}
+
                </div>
 
             </div>
